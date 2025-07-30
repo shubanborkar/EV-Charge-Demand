@@ -137,7 +137,7 @@ app_mode = st.sidebar.selectbox("Choose Mode", ["Single County Forecast", "Compa
 
 # === Main Panel Display ===
 st.markdown("<h1 style='text-align: center;'>Electric Vehicle Adoption Forecaster</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; color: #D1D5DB;'>Analyzing EV trends in Washington State</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: #D1D5DB;'>Analyzing EV trends in the State of Washington</p>", unsafe_allow_html=True)
 st.image("professional_background.jpg", use_container_width=True) # Recommended to find a new professional/clean image
 
 
