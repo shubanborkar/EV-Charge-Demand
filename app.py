@@ -8,40 +8,39 @@ from datetime import datetime
 # === Page Configuration (must be the first Streamlit command) ===
 st.set_page_config(
     page_title="EV Adoption Forecaster",
-    page_icon="📊",
+    page_icon="⚡️",
     layout="wide"
 )
 
-# === New "Sober Modern" Theming via CSS ===
+# === New "Professional Dark" Theming via CSS ===
 st.markdown("""
     <style>
         /* Main app background */
         .stApp {
-            background-color: #F0F2F6; /* Light gray background */
+            background-color: #0E1117; /* Dark background */
         }
 
         /* Sidebar styling */
         .css-1d391kg {
-            background-color: #FFFFFF; /* White sidebar */
+            background-color: #161B22; /* Slightly lighter dark for sidebar */
         }
 
         /* Font colors */
         body, .stTextInput, .stSelectbox, .stMultiselect, .stNumberInput {
-            color: #333333; /* Dark gray for text */
+            color: #FAFAFA; /* Light gray for text */
         }
 
         /* Title and header colors */
         h1, h2, h3 {
-            color: #0068C9; /* Professional blue */
+            color: #3B82F6; /* A bright, professional blue */
         }
         
         /* Metric styling for a "card" look */
         .stMetric {
-            background-color: #FFFFFF;
-            border: 1px solid #E0E0E0;
+            background-color: #161B22;
+            border: 1px solid #30363D;
             border-radius: 10px;
             padding: 15px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
         /* Removing the default top padding for the main block container */
@@ -138,7 +137,7 @@ app_mode = st.sidebar.selectbox("Choose Mode", ["Single County Forecast", "Compa
 
 # === Main Panel Display ===
 st.markdown("<h1 style='text-align: center;'>Electric Vehicle Adoption Forecaster</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; color: #333333;'>Analyzing EV trends in Washington State</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: #D1D5DB;'>Analyzing EV trends in Washington State</p>", unsafe_allow_html=True)
 st.image("professional_background.jpg", use_container_width=True) # Recommended to find a new professional/clean image
 
 
@@ -178,14 +177,14 @@ if app_mode == "Single County Forecast":
         fig = px.line(combined_df, x='Date', y='Cumulative EV', color='Source',
                       title=f"Historical vs. Forecasted EV Adoption in {county}",
                       labels={'Cumulative EV': 'Cumulative EV Count', 'Date': 'Date'},
-                      color_discrete_map={'Historical': '#0068C9', 'Forecast': '#FF8C00'}, # Blue for historical, orange for forecast
+                      color_discrete_map={'Historical': '#3B82F6', 'Forecast': '#F97316'}, # Blue for historical, orange for forecast
                       markers=True)
         
         fig.update_layout(
-            plot_bgcolor='#FFFFFF', paper_bgcolor='#FFFFFF', font_color='#333333',
+            plot_bgcolor='#161B22', paper_bgcolor='#161B22', font_color='#FAFAFA',
             legend_title_text='', legend=dict(x=0.01, y=0.98),
-            xaxis=dict(gridcolor='#E0E0E0'),
-            yaxis=dict(gridcolor='#E0E0E0'),
+            xaxis=dict(gridcolor='#30363D'),
+            yaxis=dict(gridcolor='#30363D'),
         )
         st.plotly_chart(fig, use_container_width=True)
         
@@ -217,14 +216,14 @@ if app_mode == "Compare Counties":
         fig = px.line(comp_df, x='Date', y='Cumulative EV', color='County',
                       title="EV Adoption Trends: Historical + 3-Year Forecast",
                       labels={'Cumulative EV': 'Cumulative EV Count', 'Date': 'Date'},
-                      color_discrete_sequence=px.colors.qualitative.Plotly, # Professional color sequence
+                      color_discrete_sequence=px.colors.qualitative.Vivid, # A color sequence that works well on dark
                       markers=False)
         
         fig.update_layout(
-            plot_bgcolor='#FFFFFF', paper_bgcolor='#FFFFFF', font_color='#333333',
+            plot_bgcolor='#161B22', paper_bgcolor='#161B22', font_color='#FAFAFA',
             legend_title_text='County',
-            xaxis=dict(gridcolor='#E0E0E0'),
-            yaxis=dict(gridcolor='#E0E0E0'),
+            xaxis=dict(gridcolor='#30363D'),
+            yaxis=dict(gridcolor='#30363D'),
         )
         st.plotly_chart(fig, use_container_width=True)
 
