@@ -191,7 +191,20 @@ if app_mode == "Single County Forecast":
 # === Compare Counties Mode ===
 if app_mode == "Compare Counties":
     st.header("County Comparison")
-    multi_counties = st.sidebar.multiselect("Select up to 3 counties", county_list, default=["King", "Snohomish", "Pierce"], max_selections=3)
+    # New robust code
+    # Define the list of counties you would ideally like to be the default
+    ideal_defaults = ["King", "Snohomish", "Pierce"]
+
+    # Create a new list containing only the ideal defaults that actually exist in your county_list
+    valid_defaults = [county for county in ideal_defaults if county in county_list]
+
+    # Use this "safe" list as the default for the widget
+    multi_counties = st.sidebar.multiselect(
+        "Select up to 3 counties",
+        county_list,
+        default=valid_defaults,
+        max_selections=3
+    )
 
     if multi_counties:
         comparison_data = []
