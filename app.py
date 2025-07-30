@@ -234,4 +234,4 @@ if app_mode == "Compare Counties":
 
 
 st.markdown("---")
-st.markdown("<p style='text-align: center; color: #888;'>Prepared for the AICTE Internship Cycle 2 by S4F</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: #888;'>Prepared for the AICTE Internship Cycle 2 by Shuban Borkar</p>", unsafe_allow_html=True)
