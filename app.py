@@ -145,13 +145,17 @@ st.image("professional_background.jpg", use_container_width=True) # Recommended 
 # === Single County Forecast Mode ===
 if app_mode == "Single County Forecast":
     st.header("Single County Deep Dive")
-        # New robust code
-    default_index = 0 # Default to the first county in the list
+
+    # New robust code
+    # This block determines the default county to show
+    default_index = 0  # Default to the first county in the list
     if "King" in county_list:
         default_index = county_list.index("King")
 
-county = st.sidebar.selectbox("Select a County", county_list, index=default_index)
+    # The selectbox should be in the sidebar, but controlled by this logic block
+    county = st.sidebar.selectbox("Select a County", county_list, index=default_index)
 
+    # This block runs only after a county has been selected
     if county:
         county_df = df[df['County'] == county].sort_values("Date")
         combined_df = generate_forecast(county_df, model, FORECAST_HORIZON)
@@ -184,7 +188,7 @@ county = st.sidebar.selectbox("Select a County", county_list, index=default_inde
             yaxis=dict(gridcolor='#E0E0E0'),
         )
         st.plotly_chart(fig, use_container_width=True)
-
+        
 # === Compare Counties Mode ===
 if app_mode == "Compare Counties":
     st.header("County Comparison")
