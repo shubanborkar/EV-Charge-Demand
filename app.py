@@ -145,7 +145,12 @@ st.image("professional_background.jpg", use_container_width=True) # Recommended 
 # === Single County Forecast Mode ===
 if app_mode == "Single County Forecast":
     st.header("Single County Deep Dive")
-    county = st.sidebar.selectbox("Select a County", county_list, index=county_list.index("King"))
+        # New robust code
+    default_index = 0 # Default to the first county in the list
+    if "King" in county_list:
+        default_index = county_list.index("King")
+
+county = st.sidebar.selectbox("Select a County", county_list, index=default_index)
 
     if county:
         county_df = df[df['County'] == county].sort_values("Date")
